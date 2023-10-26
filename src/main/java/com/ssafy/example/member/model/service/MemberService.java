@@ -1,5 +1,9 @@
 package com.ssafy.example.member.model.service;
 
-public interface MemberService {
+import com.ssafy.example.member.model.dto.Member;
 
+public interface MemberService {
+	void addMember(Member member);
+	
+	Member memberDetail(String id);
 }

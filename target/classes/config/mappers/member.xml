@@ -14,5 +14,13 @@
 		insert into members (id, name, password, join_date)
 		values (#{id}, #{name}, #{password}, #{joinDate})
 	</insert>
-
+	
+	<select id="memberList" resultMap="baseMember">
+		select * from member
+	</select>
+	
+	<select id="memberDetail" parameterType="string" resultMap="baseMember">
+		select * from member
+		where id=#{id}
+	</select>
 </mapper>
