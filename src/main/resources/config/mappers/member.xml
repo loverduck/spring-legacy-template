@@ -11,16 +11,27 @@
 	</resultMap>
 	
 	<insert id="addMember" parameterType="member">
-		insert into members (id, name, password, join_date)
-		values (#{id}, #{name}, #{password}, #{joinDate})
+		insert into members (id, name, password)
+		values (#{id}, #{name}, #{password})
 	</insert>
 	
 	<select id="memberList" resultMap="baseMember">
-		select * from member
+		select * from members
 	</select>
 	
 	<select id="memberDetail" parameterType="string" resultMap="baseMember">
-		select * from member
+		select * from members
 		where id=#{id}
+	</select>
+	
+	<select id="loginUser" parameterType="map" resultMap="baseMember">
+		select * from members
+		where id=#{id} and password=#{password}
+	</select>
+	
+	<select id="idCheck" parameterType="String" resultType="int">
+		select count(id)
+		from members
+		where id = #{id}
 	</select>
 </mapper>

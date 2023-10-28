@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ssafy.example.product.model.dto.Product;
-import com.ssafy.example.product.model.service.ProductServiceImpl;
+import com.ssafy.example.product.model.service.ProductService;
 
 @Controller
 @RequestMapping("/product")
 public class ProductController {
 	
 	@Autowired
-	ProductServiceImpl productService;
+	ProductService productService;
 	
 	@GetMapping("/regist")
 	public String registProduct() {

@@ -1,5 +1,7 @@
 package com.ssafy.example.member.model.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,4 +24,13 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.memberDetail(id);
 	}
 
+	@Override
+	public Member login(Map<String, String> map) {
+		return memberMapper.loginUser(map);
+	}
+
+	@Override
+	public int idCheck(String userId) {
+		return memberMapper.idCheck(userId);
+	}
 }

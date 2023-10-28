@@ -1,14 +1,18 @@
 package com.ssafy.example.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import com.ssafy.example.interceptor.SessionInterceptor;
 
 @Configuration
 @EnableWebMvc
@@ -33,12 +37,20 @@ public class MVCConfig implements WebMvcConfigurer {
 		registry.addViewController("/").setViewName("index");
 	}
 	
-	// interceptor ¼³Á¤
-//	@Autowired
-//	SessionInterceptor si;
-//	@Override
-//	public void addInterceptors(InterceptorRegistry registry) {
-//		registry.addInterceptor(si)
-//		.addPathPatterns("/regist");
-//	}
+	// interceptor ï¿½ï¿½ï¿½ï¿½
+	@Autowired
+	SessionInterceptor si;
+	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(si)
+		.addPathPatterns("/product/regist");
+	}
+	
+	
+	// Rest api
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
 }

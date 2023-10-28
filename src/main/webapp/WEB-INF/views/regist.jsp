@@ -28,7 +28,7 @@
 	    </div>
 	<div class="form-group">
 	      <label for="userId">등록자명</label>
-	      <input type="text" class="form-control" id="userId" name="id">
+	      <input type="text" class="form-control" id="userId" name="id" value="${loginUser.id}">
 	    </div>
 
 	    <button type="submit" class="btn btn-primary" id="regist">등록</button>
